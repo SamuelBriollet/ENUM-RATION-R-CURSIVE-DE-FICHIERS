@@ -1,0 +1,5 @@
+﻿  Main.c
+c:\users\samdu\source\repos\enumeration recursive de fichiers\enumeration recursive de fichiers\main.c(68): warning C4477: 'printf' : la chaîne de format '%ld' nécessite un argument de type 'long', mais l'argument variadique 2 est de type 'LONGLONG'
+  c:\users\samdu\source\repos\enumeration recursive de fichiers\enumeration recursive de fichiers\main.c(68): note: utilisez '%lld' dans la chaîne de format
+  c:\users\samdu\source\repos\enumeration recursive de fichiers\enumeration recursive de fichiers\main.c(68): note: utilisez '%I64d' dans la chaîne de format
+  Enumeration recursive de fichiers.vcxproj -> C:\Users\samdu\source\repos\Enumeration recursive de fichiers\Debug\Enumeration recursive de fichiers.exe
