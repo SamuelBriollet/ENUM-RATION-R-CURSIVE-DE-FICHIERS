@@ -3,4 +3,5 @@ C:\Users\samdu\source\repos\Enumeration recursive de fichiers\Enumeration recurs
   C:\Users\samdu\source\repos\Enumeration recursive de fichiers\Enumeration recursive de fichiers\Main.c(68): note: utilisez '%lld' dans la chaîne de format
   C:\Users\samdu\source\repos\Enumeration recursive de fichiers\Enumeration recursive de fichiers\Main.c(68): note: utilisez '%Id' dans la chaîne de format
   C:\Users\samdu\source\repos\Enumeration recursive de fichiers\Enumeration recursive de fichiers\Main.c(68): note: utilisez '%I64d' dans la chaîne de format
-  Enumeration recursive de fichiers.vcxproj -> C:\Users\samdu\source\repos\Enumeration recursive de fichiers\x64\Debug\Enumeration recursive de fichiers.exe
+Main.obj : error LNK2019: symbole externe non résolu DisplayErrorBox référencé dans la fonction main
+C:\Users\samdu\source\repos\Enumeration recursive de fichiers\x64\Debug\Enumeration recursive de fichiers.exe : fatal error LNK1120: 1 externes non résolus

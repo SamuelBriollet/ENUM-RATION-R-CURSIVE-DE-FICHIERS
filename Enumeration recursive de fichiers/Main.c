@@ -15,8 +15,8 @@ int _tmain(int argc, TCHAR *argv[])
 	HANDLE hFind = INVALID_HANDLE_VALUE;
 	DWORD dwError = 0;
 
-	// If the directory is not specified as a command-line argument,
-	// print usage.
+	// Si le répertoire n'est pas spécifié en tant qu'argument de ligne de commande,
+	// utilisation de l'impression.
 
 	if (argc != 2)
 	{
@@ -24,8 +24,8 @@ int _tmain(int argc, TCHAR *argv[])
 		return (-1);
 	}
 
-	// Check that the input path plus 3 is not longer than MAX_PATH.
-	// Three characters are for the "\*" plus NULL appended below.
+	// Vérifiez que le chemin d'entrée plus 3 n'est pas plus long que MAX_PATH.
+	// Trois caractères correspondent à "\ *" et à NULL, ajoutés ci-dessous.
 
 	StringCchLength(argv[1], MAX_PATH, &length_of_arg);
 
@@ -37,13 +37,13 @@ int _tmain(int argc, TCHAR *argv[])
 
 	_tprintf(TEXT("\nTarget directory is %s\n\n"), argv[1]);
 
-	// Prepare string for use with FindFile functions.  First, copy the
-	// string to a buffer, then append '\*' to the directory name.
+	// prépare la chaîne à utiliser avec les fonctions FindFile. Tout d'abord, copiez le
+	// Puis ajoutez '\ *' au nom du répertoire.
 
 	StringCchCopy(szDir, MAX_PATH, argv[1]);
 	StringCchCat(szDir, MAX_PATH, TEXT("\\*"));
 
-	// Find the first file in the directory.
+	// Trouve le premier fichier du répertoire.
 
 	hFind = FindFirstFile(szDir, &ffd);
 
@@ -53,7 +53,7 @@ int _tmain(int argc, TCHAR *argv[])
 		return dwError;
 	}
 
-	// List all the files in the directory with some info about them.
+	// Liste tous les fichiers du répertoire avec quelques informations à leur sujet.
 
 	do
 	{
@@ -77,37 +77,4 @@ int _tmain(int argc, TCHAR *argv[])
 
 	FindClose(hFind);
 	return dwError;
-}
-
-
-void DisplayErrorBox(LPTSTR lpszFunction)
-{
-	// Retrieve the system error message for the last-error code
-
-	LPVOID lpMsgBuf;
-	LPVOID lpDisplayBuf;
-	DWORD dw = GetLastError();
-
-	FormatMessage(
-		FORMAT_MESSAGE_ALLOCATE_BUFFER |
-		FORMAT_MESSAGE_FROM_SYSTEM |
-		FORMAT_MESSAGE_IGNORE_INSERTS,
-		NULL,
-		dw,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(LPTSTR)&lpMsgBuf,
-		0, NULL);
-
-	// Display the error message and clean up
-
-	lpDisplayBuf = (LPVOID)LocalAlloc(LMEM_ZEROINIT,
-		(lstrlen((LPCTSTR)lpMsgBuf) + lstrlen((LPCTSTR)lpszFunction) + 40) * sizeof(TCHAR));
-	StringCchPrintf((LPTSTR)lpDisplayBuf,
-		LocalSize(lpDisplayBuf) / sizeof(TCHAR),
-		TEXT("%s failed with error %d: %s"),
-		lpszFunction, dw, lpMsgBuf);
-	MessageBox(NULL, (LPCTSTR)lpDisplayBuf, TEXT("Error"), MB_OK);
-
-	LocalFree(lpMsgBuf);
-	LocalFree(lpDisplayBuf);
 }
